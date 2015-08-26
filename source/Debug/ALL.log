@@ -1,0 +1,34 @@
+﻿Build started 24/08/2015 15:57:18.
+     1>Project "D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\ALL\ALL.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Template\ALL\ALL" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glew" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glfw3" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm\gtc" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm\gtx" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         Main.cpp
+     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\eulerangle.h(19): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\main.cpp(87): warning C4018: '<' : signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\lib files\glew" /LIBPATH:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\lib files\glfw3" glfw3.lib glew32.lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.lib" /MACHINE:X86 Debug\Camera.obj
+         Debug\Cube.obj
+         Debug\Entity.obj
+         Debug\EulerAngle.obj
+         Debug\Light.obj
+         Debug\Material.obj
+         Debug\ModelLoader.obj
+         Debug\Main.obj
+         Debug\Model.obj
+         Debug\Renderer.obj
+         Debug\Scene.obj
+         Debug\Shader.obj
+         Debug\Sphere.obj
+         Debug\StringUtils.obj
+         Debug\TextureLoader.obj
+         Debug\UIButton.obj
+         Debug\UIElement.obj
+         Debug\UIRect.obj
+         Debug\UIRenderer.obj
+         Debug\Window.obj
+         ALL.vcxproj -> D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.exe
+     1>Done Building Project "D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\ALL\ALL.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.42
