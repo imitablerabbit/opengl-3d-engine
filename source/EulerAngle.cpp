@@ -1,4 +1,5 @@
 #include "EulerAngle.h"
+#include <stdio.h>
 
 EulerAngle::EulerAngle(float yaw, float pitch, float roll) {
 	this->yaw = yaw;
@@ -40,15 +41,18 @@ void EulerAngle::toAngles(glm::vec3 direction) {
 
 	direction = glm::normalize(direction);
 
-	yawTemp = atan2(direction.x, direction.y);
-	pitchTemp = atan2(direction.z, sqrt((direction.z * direction.x) + (direction.y * direction.y)));
+	yawTemp = atan2(direction.x, -direction.z);
+	pitchTemp = atan2(direction.y, sqrt(fabs(direction.z * direction.x) + fabs(direction.z * direction.z)));
 
 	//Convert back into degrees
 	pitchTemp = (pitchTemp * 180) / PI;
 	yawTemp = (yawTemp * 180) / PI;
 
-	this->pitch = pitchTemp;
+	this->pitch = -pitchTemp;
 	this->yaw = yawTemp;
+
+	yaw += 90;
+
 }
 
 //Stops the angles from extending in unwanted ways

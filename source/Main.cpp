@@ -16,7 +16,7 @@ int main() {
 	Window::windowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
 	//Create the window
-	Window window(800, 600, "Window Title");
+	Window window(800, 600, "OpenGL Engine");
 
 	//Check if window was created
 	if (window.getWindow() == NULL) {

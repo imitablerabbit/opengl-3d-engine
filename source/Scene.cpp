@@ -21,7 +21,7 @@ Scene::Scene(Window window) : renderer(0), uiRenderer(0)
 	models = std::vector<Model>();
 
 	//Create the camera
-	camera = Camera(glm::vec3(0, 0, 0), 90, 0, 0);
+	camera = Camera(glm::vec3(0, 0, 0), glm::vec3(0, 0, -5));
 
 	//Create a basic light
 	light = Light(glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));

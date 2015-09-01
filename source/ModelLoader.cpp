@@ -262,53 +262,57 @@ Model ModelLoader::loadToVao_OBJ(const char* filePath) {
 TEXTURED MODEL LOADER
 */
 
-//Load a textured model from file and a texture with a given position and a default vertex colour array and a scale
-Model ModelLoader::loadToVao_OBJ_Textured(const char* filePath, const char* imagePath, float scaleX, float scaleY,
-	float scaleZ, glm::vec3 position, std::vector<glm::vec3> colors) {
-	//Arrays for the information
-	std::vector<glm::vec3> vertices;
-	std::vector<glm::vec3> normals;
-	std::vector<glm::vec2> uvs;
-	TextureLoader textureLoader = TextureLoader();
+			//Load a textured model from file and a texture with a given position and a default vertex colour array and a scale
+			Model ModelLoader::loadToVao_OBJ_Textured(const char* filePath, const char* imagePath, float scaleX, float scaleY, float scaleZ,
+			glm::vec3 position, std::vector<glm::vec3> colors) {
 
-	//Load the Model
-	if (loadOBJ(filePath, vertices, uvs, normals, UV_INVERT_Y)) {
-		//Load a model file
-		Model model = loadToVao(vertices, scaleX, scaleY, scaleZ, position, colors);
+				//Arrays for the information
+				std::vector<glm::vec3> vertices;
+				std::vector<glm::vec3> normals;
+				std::vector<glm::vec2> uvs;
+				TextureLoader textureLoader = TextureLoader();
 
-		//Load the texture
-		GLuint textureID = textureLoader.loadDDS(imagePath);
+				//Load the Model
+				if (loadOBJ(filePath, vertices, uvs, normals, UV_INVERT_Y)) {
 
-		//Create the textured model from the model, uvs and texture
-		model.texture(uvs, textureID);
+					//Load a model file
+					Model model = loadToVao(vertices, scaleX, scaleY, scaleZ, position, colors);
 
-		//Add the normals to the model
-		if (normals.size() > 0) {
-			GLfloat* normalsTemp = &normals[0].x;
-			int normalsSize = normals.size() * 3 * sizeof(GLfloat);
-			model.setNormalsVboID(storeData(3, normalsTemp, normalsSize));
+					//Load the texture
+					GLuint textureID = textureLoader.loadDDS(imagePath);
+
+					//Create the textured model from the model, uvs and texture
+					model.texture(uvs, textureID);
+
+					//Add the normals to the model
+					if (normals.size() > 0) {
+						GLfloat* normalsTemp = &normals[0].x;
+						int normalsSize = normals.size() * 3 * sizeof(GLfloat);
+						model.setNormalsVboID(storeData(3, normalsTemp, normalsSize));
+					}
+
+					return model;
+				}
+				else {
+					fprintf(stderr, "Could not load the model, using a standard model instead.");
+					Model model = Model();
+				return model;
+			}
 		}
 
-		return model;
-	}
-	else {
-		fprintf(stderr, "Could not load the model, using a standard model instead.");
-		Model model = Model();
-		return model;
-	}
-}
+		//Load a textured model from file and a texture with a given position and a default vertex colour and a scale.
+		Model ModelLoader::loadToVao_OBJ_Textured(const char* filePath, const char* imagePath, float scaleX, float scaleY,
+			float scaleZ, glm::vec3 position, glm::vec3 color) {
 
-//Load a textured model from file and a texture with a given position and a default vertex colour and a scale.
-Model ModelLoader::loadToVao_OBJ_Textured(const char* filePath, const char* imagePath, float scaleX, float scaleY,
-	float scaleZ, glm::vec3 position, glm::vec3 color) {
-	//Arrays for the information
-	std::vector<glm::vec3> vertices;
-	std::vector<glm::vec3> normals;
-	std::vector<glm::vec2> uvs;
-	TextureLoader textureLoader = TextureLoader();
+			//Arrays for the information
+			std::vector<glm::vec3> vertices;
+			std::vector<glm::vec3> normals;
+			std::vector<glm::vec2> uvs;
+			TextureLoader textureLoader = TextureLoader();
 
-	//Load the Model
+			//Load the Model
 	if (loadOBJ(filePath, vertices, uvs, normals, UV_INVERT_Y)) {
+
 		//Load a model file
 		Model model = loadToVao(vertices, scaleX, scaleY, scaleZ, position, color);
 
@@ -376,6 +380,7 @@ OTHER
 //OBJ Parser to retrieve the vertices, uvs and normals
 bool ModelLoader::loadOBJ(const char *path, std::vector<glm::vec3> &vertices,
 	std::vector<glm::vec2> &uvs, std::vector<glm::vec3> &normals, const unsigned int flags) {
+
 	//Boolean values for flags
 	bool uvInvertY = false;
 
@@ -411,6 +416,7 @@ bool ModelLoader::loadOBJ(const char *path, std::vector<glm::vec3> &vertices,
 				//This is a comment so ignore
 			}
 			else if (words[0].compare("v") == 0) {
+
 				//This is a vector so create the different coordinates
 				glm::vec3 vertex = glm::vec3();
 				float x;
@@ -419,6 +425,7 @@ bool ModelLoader::loadOBJ(const char *path, std::vector<glm::vec3> &vertices,
 
 				//Check if the size of the line is big enough to accomodate the floats
 				if (words.size() == 4) {
+
 					//Parse the strings into floats
 					x = stof(words[1]);
 					y = stof(words[2]);
@@ -490,6 +497,7 @@ bool ModelLoader::loadOBJ(const char *path, std::vector<glm::vec3> &vertices,
 
 				//Check if the size of the line is big enough to accomodate the floats
 				if (words.size() == 4) {
+
 					//Split each face vertex into its components
 					for (int i = 0; i < 3; i++)
 					{
@@ -518,7 +526,8 @@ bool ModelLoader::loadOBJ(const char *path, std::vector<glm::vec3> &vertices,
 		}
 
 		//Convert the faces into the vertices, normals and uvs
-		for (int i = 0; i < verticesIndex.size(); i++){
+		for (int i = 0; i < verticesIndex.size(); i++) {
+
 			//Get the indices of its attributes
 			if (verticesIndex.size() > 0) {
 				unsigned int vertexIndex = verticesIndex[i];

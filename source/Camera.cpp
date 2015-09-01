@@ -11,7 +11,7 @@ Camera::Camera(glm::vec3 position, glm::vec3 direction) {
 
 	//Create the viewing angles
 	EulerAngle angles = EulerAngle();
-	angles.toAngles(this->direction);
+	angles.toAngles(this->direction - this->position);
 
 	this->pitch = angles.getPitch();
 	this->yaw = angles.getYaw();
