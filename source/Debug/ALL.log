@@ -1,4 +1,4 @@
-﻿Build started 01/09/2015 20:55:21.
+﻿Build started 02/09/2015 15:07:15.
      1>Project "D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\ALL\ALL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Template\ALL\ALL" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glew" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glfw3" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm\gtc" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm\gtx" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Scene.cpp
@@ -31,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.24
+Time Elapsed 00:00:01.26

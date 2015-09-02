@@ -27,21 +27,24 @@ glm::vec3 EulerAngle::toVector() {
 	glm::vec3 result;
 
 	//Calculate the vector components from the Euler angles
-	result.x = cos(yaw) * cos(pitch);
+	result.x = sin(yaw) * cos(pitch);
 	result.y = sin(pitch);
-	result.z = sin(yaw) * cos(pitch);
+	result.z = -cos(yaw) * cos(pitch);
 
 	return result;
 }
 
 //Converts a vector back into its euler angles
 void EulerAngle::toAngles(glm::vec3 direction) {
+
 	float pitchTemp = 0;
 	float yawTemp = 0;
 
+	//Normalize the vector
 	direction = glm::normalize(direction);
 
-	yawTemp = atan2(direction.x, -direction.z);
+	//Calculate the yaw and the pitch from the direction vector
+	yawTemp = atan2(-direction.x, direction.z);
 	pitchTemp = atan2(direction.y, sqrt(fabs(direction.z * direction.x) + fabs(direction.z * direction.z)));
 
 	//Convert back into degrees
@@ -51,7 +54,7 @@ void EulerAngle::toAngles(glm::vec3 direction) {
 	this->pitch = -pitchTemp;
 	this->yaw = yawTemp;
 
-	yaw += 90;
+	//yaw += 90;
 
 }
 
