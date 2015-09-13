@@ -11,7 +11,7 @@
 <p>In order to use the source files and Visual Studio solution, make sure that the libraries are linked correctly.</p>
 <h2>Screenshots:</h2>
 <strong>Basic Models:</strong>
-![Basic Models](/screenshots/basic-models.png?raw=true)
+![Basic Models](/Screenshots/basic-models.png?raw=true)
 <br><br>
 <strong>Multiple Models:</strong>
-![Multiple Models](/screenshots/multiple-models.png?raw=true)
+![Multiple Models](/Screenshots/multiple-models.png?raw=true)
