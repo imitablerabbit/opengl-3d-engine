@@ -6,8 +6,9 @@ Constructors and Destructors
 
 //Create the window
 Window::Window(int width, int height, char* title) {
+
 	//Create the window
-	this->window = glfwCreateWindow(width, height, title, NULL, NULL);
+	this->window = glfwCreateWindow(width, height, title, glfwGetPrimaryMonitor(), NULL);
 }
 
 Window::Window() {
@@ -22,6 +23,7 @@ Window Functions
 
 //Make this window the current context
 bool Window::makeContext() {
+
 	//Check if the window has already been created
 	if (this->window == NULL) {
 		return false;
@@ -39,6 +41,7 @@ bool Window::makeContext() {
 
 //Checks if the window should close
 bool Window::shouldClose() {
+
 	//Check if the window has already been created
 	if (this->window == NULL) {
 		return false;

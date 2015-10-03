@@ -14,7 +14,7 @@ VIRTUAL FUNCTIONS
 
 //Run the UIElement
 void UIElement::run(){
-	fprintf(stderr, "I am a UIElement");
+	//fprintf(stderr, "I am a UIElement");
 }
 
 /*
@@ -72,6 +72,7 @@ UTIL FUNCTIONS
 
 //This will texture the UIElement
 void UIElement::texture(GLuint textureID) {
+
 	//Create the UVs
 	std::vector<glm::vec2> uvs = std::vector<glm::vec2>();
 	uvs.insert(uvs.end(), glm::vec2(1.0, 0));

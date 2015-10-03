@@ -16,7 +16,7 @@ int main() {
 	Window::windowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
 	//Create the window
-	Window window(800, 600, "OpenGL Engine");
+	Window window(1366, 768, "OpenGL Engine");
 
 	//Check if window was created
 	if (window.getWindow() == NULL) {
@@ -66,7 +66,7 @@ int main() {
 	//Create the models
 	Model texturedModel = loader.loadToVao_OBJ_Textured("models/cube.obj", "textures/cube.dds", glm::vec3(-3, 0, -5));
 	Model monkey = loader.loadToVao_OBJ("models/suzanne.obj", glm::vec3(0, 0, -5));
-	monkey.texture(textureLoader.loadDDS("textures/suzanne texture.dds"));
+	monkey.texture(textureLoader.loadBMP_custom("textures/suzanne texture.bmp"));
 	monkey.setReflectivity(0.0);
 
 	//Create an array of the same entities and add them to the scene
@@ -94,17 +94,17 @@ int main() {
 
 	//Create the onclick function
 	auto onClick = []() {
-		fprintf(stdout, "Button has been clicked!\n");
+		exit(0);
 	};
 
 	//Create the UIs
-	UIButton button = UIButton(0.2f, 0.2f, glm::vec2(-0.9, 0.87), window, onClick);
-	button.setAlignment(UIButton::ALIGN_TOP_LEFT);
-	button.setColor(glm::vec3(0, 1, 0));
+	UIButton button = UIButton(0.06f, 0.05f, glm::vec2(1, -1), window, onClick);
+	button.setAlignment(UIButton::ALIGN_BOTTOM_RIGHT);
+	button.texture(textureLoader.loadBMP_custom("textures/Exit.bmp"));
 	UIElement* ui = &button;
 
 	//Add the UI
-	//scene.addUI(ui);
+	scene.addUI(ui);
 
 	//Main loop
 	while (!window.shouldClose()) {

@@ -36,22 +36,30 @@ UTIL FUNCTIONS
 */
 
 //Run the scene
-bool Scene::run() {
+bool Scene::run() {	
 
-	//Pause the game and allow mouse movement
-	if (!paused) {
-		//Calculate the matrices
-		camera.calculateViewMatrix(window);
-		camera.calculateProjectionMatrix(window);
-		glfwSetInputMode(window.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-	}
-	else {
-		glfwSetInputMode(window.getWindow(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-	}
-
+	//Check if the scene should be paused
 	//Poll for the escape button and set whether the menu should be shown
 	if (glfwGetKey(window.getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS && delay <= 0) {
-		(paused) ? paused = false : paused = true;
+
+		//If the scene is paused move the cursor to the center and unpause
+		if (paused) {
+
+			//Get the window width and height
+			int width, height;
+			glfwGetWindowSize(window.getWindow(), &width, &height);
+
+			//Hide the cursor and center
+			glfwSetInputMode(window.getWindow(), GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+			glfwSetCursorPos(window.getWindow(), width / 2, height / 2);
+
+			//Unpause the scene
+			paused = false;
+		}
+		else {
+			paused = true;
+		}
+
 		fprintf(stdout, "Menu button pressed\n");
 		delay = 20;
 	}
@@ -60,6 +68,17 @@ bool Scene::run() {
 	delay--;
 	if (delay < 0) {
 		delay = 0;
+	}
+
+	//Pause the game and allow mouse movement
+	if (!paused) {
+
+		//Calculate the matrices
+		camera.calculateViewMatrix(window);
+		camera.calculateProjectionMatrix(window);
+	}
+	else {
+		glfwSetInputMode(window.getWindow(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
 
 	//Calculate the view matrix
@@ -74,14 +93,18 @@ bool Scene::run() {
 	//Render the entities from the entity map
 	renderer.renderMap(entities, &projectionMatrix, &viewMatrix, &light);
 
-	//Render any UI elements here
-	uiRenderer.render(uis);
+	//Check if there are any uis to render
+	if (uis.size() != 0 && paused) {
 
-	//Run the UI functions
-	for (int i = 0; i < uis.size(); i++) {
-		uis[i]->run();
+		//Render any UI elements here
+		uiRenderer.render(uis);
+
+		//Run the UI functions
+		for (int i = 0; i < uis.size(); i++) {
+			uis[i]->run();
+		}
 	}
-
+	
 	return true;
 }
 
@@ -120,6 +143,12 @@ void Scene::addLight(Light light) {
 //Return a pointer to the camera
 Camera* Scene::getCamera() {
 	return &this->camera;
+}
+
+//Remove the most recent UI element added
+void Scene::removeUI(int position) {
+
+	uis.erase(uis.begin() + position);
 }
 
 /*

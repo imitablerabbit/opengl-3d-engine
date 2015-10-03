@@ -26,6 +26,7 @@ VIRTUAL OVERRIDES
 
 //Check whether the button is being clicked
 void UIButton::run() {
+
 	//Get mouse x and y
 	glfwGetCursorPos(window.getWindow(), &xPos, &yPos);
 
@@ -40,8 +41,10 @@ void UIButton::run() {
 	//Check if the cursor is between the button bounds
 	if (xPosWorld > position.x && xPosWorld < position.x + (model.getScaleX() * 2)) {
 		if (yPosWorld < position.y && yPosWorld > position.y - (model.getScaleY() * 2)) {
+
 			//If the button is pressed close the window
 			if (glfwGetMouseButton(window.getWindow(), GLFW_MOUSE_BUTTON_1) == GLFW_PRESS) {
+
 				//Check if the delay is over between clicks
 				if (delay <= 0) {
 					onClick();

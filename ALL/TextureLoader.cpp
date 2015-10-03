@@ -1,4 +1,6 @@
 #include "TextureLoader.h"
+#include <algorithm>
+#include <iterator>
 
 TextureLoader::TextureLoader()
 {
@@ -16,6 +18,7 @@ GLuint TextureLoader::loadBMP_custom(const char * imagepath){
 	unsigned int dataPos;
 	unsigned int imageSize;
 	unsigned int width, height;
+
 	// Actual RGB data
 	unsigned char * data;
 
@@ -46,7 +49,7 @@ GLuint TextureLoader::loadBMP_custom(const char * imagepath){
 	height = *(int*)&(header[0x16]);
 
 	// Some BMP files are misformatted, guess missing information
-	if (imageSize == 0)    imageSize = width*height * 3; // 3 : one byte for each Red, Green and Blue component
+	if (imageSize == 0)    imageSize = width * height * 3; // 3 : one byte for each Red, Green and Blue component
 	if (dataPos == 0)      dataPos = 54; // The BMP header is done that way
 
 	// Create a buffer
@@ -58,6 +61,26 @@ GLuint TextureLoader::loadBMP_custom(const char * imagepath){
 	// Everything is in memory now, the file wan be closed
 	fclose(file);
 
+	//Create a temp array
+	unsigned char * temp = new unsigned char[imageSize];
+
+	int heightTemp = height;
+	int j = 0;
+
+	//Invert the image data
+	for (size_t i = 0; i < imageSize; i+=3)
+	{
+		temp[j + ((width * heightTemp) * 3)] = data[i];
+		temp[j + 1 + ((width * heightTemp) * 3)] = data[i + 1];
+		temp[j + 2 + ((width * heightTemp) * 3)] = data[i + 2];
+		j += 3;
+
+		if (i % width * 3 == 0) {
+			heightTemp--;
+			j = 0;
+		}
+	}
+
 	// Create one OpenGL texture
 	GLuint textureID;
 	glGenTextures(1, &textureID);
@@ -66,7 +89,7 @@ GLuint TextureLoader::loadBMP_custom(const char * imagepath){
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
 	// Give the image to OpenGL
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, temp);
 
 	// OpenGL has now copied the data. Free our own version
 	delete[] data;

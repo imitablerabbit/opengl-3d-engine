@@ -1,22 +1,12 @@
-﻿Build started 05/09/2015 18:41:55.
+﻿Build started 03/10/2015 12:15:27.
      1>Project "D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\ALL\ALL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Template\ALL\ALL" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glew" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glfw3" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm\gtc" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm\gtx" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp
-         Camera.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm\gtc" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glm\gtx" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glfw3" /I"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\include\glew" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_DEPRECATE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Scene.cpp
+         Scene.cpp
      1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\eulerangle.h(19): warning C4305: 'initializing' : truncation from 'double' to 'const float'
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(24): warning C4305: '=' : truncation from 'double' to 'float'
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(28): warning C4305: '=' : truncation from 'double' to 'float'
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(49): warning C4305: '=' : truncation from 'double' to 'float'
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(53): warning C4305: '=' : truncation from 'double' to 'float'
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(73): warning C4305: '=' : truncation from 'double' to 'float'
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(77): warning C4305: '=' : truncation from 'double' to 'float'
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(97): warning C4305: '=' : truncation from 'double' to 'float'
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(101): warning C4305: '=' : truncation from 'double' to 'float'
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(126): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(127): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\camera.cpp(186): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\work\computer science\other\opengl\opengl 3.0\templates\all\all\scene.cpp(102): warning C4018: '<' : signed/unsigned mismatch
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\lib files\glew" /LIBPATH:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\lib files\glfw3" glfw3.lib glew32.lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.lib" /MACHINE:X86 Debug\Camera.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\lib files\glfw3" /LIBPATH:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Libraries\Easy Install\lib files\glew" glfw3.lib glew32.lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Work\Computer Science\Other\OpenGL\OpenGl 3.0\Templates\ALL\Debug\ALL.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Cube.obj
          Debug\Entity.obj
          Debug\EulerAngle.obj
@@ -41,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.81
+Time Elapsed 00:00:01.26

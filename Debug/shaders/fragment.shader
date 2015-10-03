@@ -27,7 +27,7 @@ void main() {
 
     //Calculate brightness via dot product
     float normalDot = dot(unitNormal, unitToLightVector);
-    float brightness = max(normalDot, 0.0);
+    float brightness = max(normalDot, 0.2);
     vec3 diffuse = brightness * lightColor;
 
     //Calculate the vector of the vertex from the light and its relfected ray
