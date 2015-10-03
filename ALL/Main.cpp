@@ -64,7 +64,7 @@ int main() {
 	TextureLoader textureLoader = TextureLoader();
 
 	//Create the models
-	Model texturedModel = loader.loadToVao_OBJ_Textured("models/cube.obj", "textures/cube.dds", glm::vec3(-3, 0, -5));
+	Model texturedModel = loader.loadToVao_OBJ_Textured("models/cube.obj", "textures/cube.bmp", glm::vec3(-3, 0, -5));
 	Model monkey = loader.loadToVao_OBJ("models/suzanne.obj", glm::vec3(0, 0, -5));
 	monkey.texture(textureLoader.loadBMP_custom("textures/suzanne texture.bmp"));
 	monkey.setReflectivity(0.0);

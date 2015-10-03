@@ -262,62 +262,62 @@ Model ModelLoader::loadToVao_OBJ(const char* filePath) {
 TEXTURED MODEL LOADER
 */
 
-			//Load a textured model from file and a texture with a given position and a default vertex colour array and a scale
-			Model ModelLoader::loadToVao_OBJ_Textured(const char* filePath, const char* imagePath, float scaleX, float scaleY, float scaleZ,
-			glm::vec3 position, std::vector<glm::vec3> colors) {
+//Load a textured model from file and a texture with a given position and a default vertex colour array and a scale
+Model ModelLoader::loadToVao_OBJ_Textured(const char* filePath, const char* imagePath, float scaleX, float scaleY, float scaleZ,
+glm::vec3 position, std::vector<glm::vec3> colors) {
 
-				//Arrays for the information
-				std::vector<glm::vec3> vertices;
-				std::vector<glm::vec3> normals;
-				std::vector<glm::vec2> uvs;
-				TextureLoader textureLoader = TextureLoader();
+	//Arrays for the information
+	std::vector<glm::vec3> vertices;
+	std::vector<glm::vec3> normals;
+	std::vector<glm::vec2> uvs;
+	TextureLoader textureLoader = TextureLoader();
 
-				//Load the Model
-				if (loadOBJ(filePath, vertices, uvs, normals, UV_INVERT_Y)) {
+	//Load the Model
+	if (loadOBJ(filePath, vertices, uvs, normals, UV_INVERT_Y)) {
 
-					//Load a model file
-					Model model = loadToVao(vertices, scaleX, scaleY, scaleZ, position, colors);
+		//Load a model file
+		Model model = loadToVao(vertices, scaleX, scaleY, scaleZ, position, colors);
 
-					//Load the texture
-					GLuint textureID = textureLoader.loadDDS(imagePath);
+		//Load the texture
+		GLuint textureID = textureLoader.loadBMP_custom(imagePath);
 
-					//Create the textured model from the model, uvs and texture
-					model.texture(uvs, textureID);
+		//Create the textured model from the model, uvs and texture
+		model.texture(uvs, textureID);
 
-					//Add the normals to the model
-					if (normals.size() > 0) {
-						GLfloat* normalsTemp = &normals[0].x;
-						int normalsSize = normals.size() * 3 * sizeof(GLfloat);
-						model.setNormalsVboID(storeData(3, normalsTemp, normalsSize));
-					}
-
-					return model;
-				}
-				else {
-					fprintf(stderr, "Could not load the model, using a standard model instead.");
-					Model model = Model();
-				return model;
-			}
+		//Add the normals to the model
+		if (normals.size() > 0) {
+			GLfloat* normalsTemp = &normals[0].x;
+			int normalsSize = normals.size() * 3 * sizeof(GLfloat);
+			model.setNormalsVboID(storeData(3, normalsTemp, normalsSize));
 		}
 
-		//Load a textured model from file and a texture with a given position and a default vertex colour and a scale.
-		Model ModelLoader::loadToVao_OBJ_Textured(const char* filePath, const char* imagePath, float scaleX, float scaleY,
-			float scaleZ, glm::vec3 position, glm::vec3 color) {
+		return model;
+	}
+	else {
+		fprintf(stderr, "Could not load the model, using a standard model instead.");
+		Model model = Model();
+	return model;
+}
+}
 
-			//Arrays for the information
-			std::vector<glm::vec3> vertices;
-			std::vector<glm::vec3> normals;
-			std::vector<glm::vec2> uvs;
-			TextureLoader textureLoader = TextureLoader();
+//Load a textured model from file and a texture with a given position and a default vertex colour and a scale.
+Model ModelLoader::loadToVao_OBJ_Textured(const char* filePath, const char* imagePath, float scaleX, float scaleY,
+float scaleZ, glm::vec3 position, glm::vec3 color) {
 
-			//Load the Model
+	//Arrays for the information
+	std::vector<glm::vec3> vertices;
+	std::vector<glm::vec3> normals;
+	std::vector<glm::vec2> uvs;
+	TextureLoader textureLoader = TextureLoader();
+
+	//Load the Model
 	if (loadOBJ(filePath, vertices, uvs, normals, UV_INVERT_Y)) {
 
 		//Load a model file
 		Model model = loadToVao(vertices, scaleX, scaleY, scaleZ, position, color);
 
 		//Load the texture
-		GLuint textureID = textureLoader.loadDDS(imagePath);
+		GLuint textureID = textureLoader.loadBMP_custom(imagePath);
 
 		//Create the textured model from the model, uvs and texture
 		model.texture(uvs, textureID);
