@@ -104,7 +104,7 @@ int main() {
 	UIElement* ui = &button;
 
 	//Add the UI
-	scene.addUI(ui);
+	scene.addPauseUI(ui);
 
 	//Main loop
 	while (!window.shouldClose()) {

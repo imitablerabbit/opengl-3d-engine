@@ -93,8 +93,9 @@ bool Scene::run() {
 	//Render the entities from the entity map
 	renderer.renderMap(entities, &projectionMatrix, &viewMatrix, &light);
 
+	//Render any UI
 	//Check if there are any uis to render
-	if (uis.size() != 0 && paused) {
+	if (uis.size() != 0) {
 
 		//Render any UI elements here
 		uiRenderer.render(uis);
@@ -102,6 +103,18 @@ bool Scene::run() {
 		//Run the UI functions
 		for (int i = 0; i < uis.size(); i++) {
 			uis[i]->run();
+		}
+	}
+
+	//Render the paused UI's
+	if (pauseUis.size() != 0 && paused) {
+
+		//Render any UI elements here
+		uiRenderer.render(pauseUis);
+
+		//Run the UI functions
+		for (int i = 0; i < pauseUis.size(); i++) {
+			pauseUis[i]->run();
 		}
 	}
 	
@@ -135,6 +148,12 @@ int Scene::addUI(UIElement* ui) {
 	return uis.size();
 }
 
+//Add a UI element and return the position
+int Scene::addPauseUI(UIElement* ui) {
+	pauseUis.insert(pauseUis.end(), ui);
+	return pauseUis.size();
+}
+
 //Add a light to the scene
 void Scene::addLight(Light light) {
 	this->light = light;
@@ -149,6 +168,11 @@ Camera* Scene::getCamera() {
 void Scene::removeUI(int position) {
 
 	uis.erase(uis.begin() + position);
+}
+
+//Remove the most recent UI element added
+void Scene::removePauseUI(int position) {
+	pauseUis.erase(pauseUis.begin() + position);
 }
 
 /*

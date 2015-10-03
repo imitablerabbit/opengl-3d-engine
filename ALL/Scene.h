@@ -33,9 +33,11 @@ class Scene
 		void addEntity(Entity*);
 		int addModel(Model);
 		int addUI(UIElement*);
+		int addPauseUI(UIElement*);
 		void addLight(Light);
 		void removeModel(int);
 		void removeUI(int);
+		void removePauseUI(int);
 
 		//Getters
 		glm::mat4 getMVP();
@@ -57,6 +59,7 @@ class Scene
 
 		//Arrays of elements and models
 		std::vector<UIElement*> uis;
+		std::vector<UIElement*> pauseUis;
 		std::vector<Model> models;
 
 		//Variables
