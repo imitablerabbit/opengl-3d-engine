@@ -188,7 +188,6 @@ void Model::translateZ(float zTranslation) {
 }
 
 //Create the modelMatrix
-//Create the modelMatrix
 glm::mat4 Model::createModelMatrix() {
 
 	glm::mat4 modelMatrix = glm::mat4(1.0f);

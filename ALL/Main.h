@@ -21,11 +21,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-class Main{
+class Main {
+
 	public:
 		Main();
 		~Main();
-		int main();
+		int start();
+
+	private:
+		int init();
+		Window createWindow();
+		Window window;
 };
 
 #endif

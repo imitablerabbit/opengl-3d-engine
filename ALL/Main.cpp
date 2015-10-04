@@ -1,59 +1,27 @@
 #include "Main.h"
 
-//The main function
 int main() {
+	Main main = Main();	
+}
 
-	//Init glfw
-	if (!glfwInit()) {
-		fprintf(stderr, "Could not init glfw");
+//Constructor & Destructor
+Main::Main() {
+	start();
+}
+
+Main::~Main() {
+
+}
+
+//The main function
+int Main::start() {
+
+	//Init
+	if (init() == -1) {
+		fprintf(stderr, "Could not initialise the program\n");
 		return -1;
 	}
-
-	//Set window hints
-	Window::windowHint(GLFW_SAMPLES, 4);
-	Window::windowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	Window::windowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	Window::windowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
-
-	//Create the window
-	Window window(1366, 768, "OpenGL Engine");
-
-	//Check if window was created
-	if (window.getWindow() == NULL) {
-		fprintf(stderr, "Could not create the window");
-		glfwTerminate();
-		return -1;
-	}
-
-	//Set the current context
-	if (!window.makeContext()) {
-		fprintf(stderr, "Could not make the window the current context");
-	}
-
-	//Allow for recent glew
-	glewExperimental = true;
-
-	//Init glew
-	if (glewInit() != GLEW_OK) {
-		fprintf(stderr, "Could not init glew");
-		glfwTerminate();
-		return -1;
-	}
-
-	//Set the input mode
-	glfwSetInputMode(window.getWindow(), GLFW_STICKY_KEYS, GL_TRUE);
-	glfwSetInputMode(window.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-	//Clear color
-	glClearColor(0, 0, 1, 1);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	//Enable depth test
-	glEnable(GL_DEPTH_TEST);
-
-	//Accept fragment if it closer to the camera than the former one
-	glDepthFunc(GL_LESS);
-
+	
 	//Create the scene
 	Scene scene = Scene(window);
 	Camera* camera = scene.getCamera();
@@ -124,4 +92,69 @@ int main() {
 	glfwTerminate();
 
 	return 0;
+}
+
+//Initialises all of the glfw and glew
+int Main::init() {
+
+	//Init glfw
+	if (!glfwInit()) {
+		fprintf(stderr, "Could not init glfw");
+		return -1;
+	}
+
+	//Create the window
+	window = createWindow();
+
+	//Allow for recent glew
+	glewExperimental = true;
+
+	//Init glew
+	if (glewInit() != GLEW_OK) {
+		fprintf(stderr, "Could not init glew");
+		glfwTerminate();
+		return -1;
+	}
+
+	//Set the input mode
+	glfwSetInputMode(window.getWindow(), GLFW_STICKY_KEYS, GL_TRUE);
+	glfwSetInputMode(window.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+	//Clear color
+	glClearColor(0, 0, 1, 1);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	//Enable depth test
+	glEnable(GL_DEPTH_TEST);
+
+	//Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
+
+	return 0;
+}
+
+//Create the window and openGL context
+Window Main::createWindow() {
+
+	//Set window hints
+	Window::windowHint(GLFW_SAMPLES, 4);
+	Window::windowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	Window::windowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	Window::windowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
+
+	//Create the window
+	Window window(1366, 768, "OpenGL Engine");
+
+	//Check if window was created
+	if (window.getWindow() == NULL) {
+		fprintf(stderr, "Could not create the window");
+		glfwTerminate();
+	}
+
+	//Set the current context
+	if (!window.makeContext()) {
+		fprintf(stderr, "Could not make the window the current context");
+	}
+
+	return window;
 }

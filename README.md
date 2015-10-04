@@ -29,14 +29,14 @@
 
 <h3>Controls:</h3>
 
-<p>
-Camera (Look around) - Mouse movement<br>
-Move forward (In the direction the camera is facing) - 'w' key<br>
-Move backwards - 's' key<br>
-Move left - 'a' key<br>
-Move right - 'd' key<br>
-Menu - 'Esc' key
-</p>
+<ul>
+    <li>Camera (Look around) - Mouse movement</li>
+    <li>Move forward (In the direction the camera is facing) - 'w' key</li>
+    <li>Move backwards - 's' key</li>
+    <li>Move left - 'a' key</li>
+    <li>Move right - 'd' key</li>
+    <li>Menu - 'Esc' key</li>
+</ul>
 
 <p>Note: In order to close the program either open the menu and click on the Exit button or press 'Alt' + 'F4'.
 
